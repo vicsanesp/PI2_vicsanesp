@@ -1,0 +1,8 @@
+abstract_ assert_ boolean_ break_ byte_ case_ catch_ char
+class_ continue default_ do double_ else enum_ exports_
+extends_ final_ finally_ float_ for_ if_ implements_ import
+instanceof_ int interface_ long module_ native new_ non-sealed_
+package_ permits_ private_ protected_ public_ sealed_ record_ return
+short_ static strictfp_ super switch_ synchronized this_ throw_
+throws_ transient_ try_ void_ volatile_ while_ var_ yield
+parte_ comun datos_ compartidos grafos_ solve geneticos_ ejemplos_
