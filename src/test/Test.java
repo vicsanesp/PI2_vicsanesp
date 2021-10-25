@@ -14,7 +14,8 @@ public class Test {
 		System.out.println("========================Ejercicio 1======================================");
 		List<List<Integer>> ej1 = Ejercicio1.lector1("ficheros/PI2Ej1DatosEntrada.txt");
 		for(List<Integer> l:ej1) {
-			System.out.println("Entrada: " + l);
+			System.out.println("(a, b, c) = " + l);
+			System.out.println("Sol. Rec. No Final: " + Ejercicio1.ejercicio1RecNoFin(l.get(0), l.get(1), l.get(2), ""));
 		}
 		System.out.println("========================Ejercicio 2======================================");
 		String[][] ej21 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
@@ -25,7 +26,7 @@ public class Test {
 	              System.out.print(ej21[x][y]+ " | ");   
 	        System.out.println("\n----------------------------------------");
 		}
-		System.out.println(Ejercicio2.ejercicio2(ej21));
+//		System.out.println(Ejercicio2.ejercicio2(ej21));
 		
 		
 		System.out.println("========================Ejercicio 3======================================");
