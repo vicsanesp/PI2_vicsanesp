@@ -1,5 +1,6 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ejercicios.Ejercicio1;
@@ -7,6 +8,7 @@ import ejercicios.Ejercicio2;
 import ejercicios.Ejercicio3;
 import ejercicios.Ejercicio4;
 import ejercicios.Ejercicio5;
+import us.lsi.common.Matrix;
 
 public class Test {
 
@@ -18,15 +20,15 @@ public class Test {
 			System.out.println("Sol. Rec. No Final: " + Ejercicio1.ejercicio1RecNoFin(l.get(0), l.get(1), l.get(2), ""));
 		}
 		System.out.println("========================Ejercicio 2======================================");
-		String[][] ej21 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
+		Matrix<String> ej21 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
 //		String[][] ej22 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
 		System.out.println("Entrada: ");
-		for (int x=0; x < ej21.length; x++){
-	        for (int y=0; y < ej21[x].length; y++)
-	              System.out.print(ej21[x][y]+ " | ");   
+		for (int x=0; x < ej21.nc(); x++){
+	        for (int y=0; y < ej21.nf(); y++)
+	              System.out.print(ej21.get(x, y)+ " | ");   
 	        System.out.println("\n----------------------------------------");
 		}
-//		System.out.println(Ejercicio2.ejercicio2(ej21));
+		System.out.println(Ejercicio2.ejercicio2(ej21, new ArrayList<String>()));
 		
 		
 		System.out.println("========================Ejercicio 3======================================");
