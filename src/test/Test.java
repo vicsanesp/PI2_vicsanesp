@@ -21,21 +21,34 @@ public class Test {
 		}
 		System.out.println("========================Ejercicio 2======================================");
 		Matrix<String> ej21 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
-//		String[][] ej22 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
+		Matrix<String> ej22 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada2.txt");
 		System.out.println("Entrada: ");
 		for (int x=0; x < ej21.nc(); x++){
 	        for (int y=0; y < ej21.nf(); y++)
 	              System.out.print(ej21.get(x, y)+ " | ");   
 	        System.out.println("\n----------------------------------------");
 		}
-		System.out.println(Ejercicio2.ejercicio2(ej21, new ArrayList<String>()));
+		for (int i = 0; i < Ejercicio2.ejercicio2(ej21, new ArrayList<String>()).size(); i++) {
+			System.out.println(i+1 + ") " + Ejercicio2.ejercicio2(ej21).get(i));
+		}
+		
+		System.out.println("Entrada: ");
+		for (int x=0; x < ej22.nc(); x++){
+	        for (int y=0; y < ej22.nf(); y++)
+	              System.out.print(ej22.get(x, y)+ " | ");   
+	        System.out.println("\n----------------------------------------");
+		}
+		for (int i = 0; i < Ejercicio2.ejercicio2(ej22, new ArrayList<String>()).size(); i++) {
+			System.out.println(i+1 + ") " + Ejercicio2.ejercicio2(ej22).get(i));
+		}	
 		
 		
 		System.out.println("========================Ejercicio 3======================================");
 		List<List<Integer>> ej3lista = Ejercicio3.lector3lista("ficheros/PI2Ej3DatosEntrada.txt");
 		List<List<Integer>> ej3rango = Ejercicio3.lector3Rango("ficheros/PI2Ej3DatosEntrada.txt");
 		for (int i = 0; i < ej3lista.size(); i++) {
-			System.out.println("Entrada: " + ej3lista.get(i) + " Rango: " + ej3rango.get(i));
+			System.out.println("Entrada: " + ej3lista.get(i) + " Rango: [" + ej3rango.get(i).get(0) + ", " + ej3rango.get(i).get(1) + ")");
+			System.out.println("Conjunto obtenido: " + Ejercicio3.ejercicio3(ej3lista.get(i), ej3rango.get(i).get(0), ej3rango.get(i).get(1)));
 		}
 		
 		System.out.println("========================Ejercicio 4======================================");
