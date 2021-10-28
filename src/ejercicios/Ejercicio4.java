@@ -1,57 +1,56 @@
 package ejercicios;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class Ejercicio5 {
+import us.lsi.common.Files2;
 
-//	hacer iterativo, y recursivo con y sin memoria de: 
-//			a + b^2 + 2*c, a<3 Ã³ b<3 Ã³ c<3
-//
-//g(a,b,c)  g(a-1, b/2, c/2) + g(a-3, b/3, c/3),    a es multiplo de b
-//
-//			g(a/3, b-3, c-3) + g(a/2, b-2, c-2), eoc
+public class Ejercicio4 {
+
+//	fn = 2*fn-1 + 4*fn-2 + 6*fn-3
+//			f2 = 6, f1 = 4, f0 = 2
 	
-//	public static Integer ejercicio5It(Integer a, Integer b, Integer c) {
-//		Integer res = 0;
-//		Integer[][][] g = null;
-//		if(a<3 || b<3 || c<3) {
-//			res = a + b*b + 2*c;
-//		}
-//		if(a%b == 0) {
-//			res = g[a-1][b/2][c/2] + g[a-3][b/3][c/3];
-//		}
-//		else {
-//			res = g[a/3][b-3][c-3] + g[a/2][b-2][c-2];
-//		}
-//		return res;
-//	}
 	
-	public static Integer ejercicio5RecNoMem(Integer a, Integer b, Integer c) {
-		if(a<3 || b<3 || c<3) {
-			return a + b*b + 2*c;
+	public static long ejercicio4It(long n) {
+		long tercero = 6;
+		long segundo = 4;
+		long primero = 2;
+		long temporal1 = 2;
+		long temporal2 = 4;
+		int i = 0;
+		while(i<n) {
+			temporal1 = primero;
+			temporal2 = segundo;
+			primero = segundo;
+			segundo = tercero;
+			tercero = 2*tercero + 4*temporal2 + 6*temporal1;
+			i++;
 		}
-		else if(a % b == 0) {
-			return ejercicio5RecNoMem(a-1, b/2, c/2) + ejercicio5RecNoMem(a-3, b/3, c/3);
-		}
-		else {
-			return ejercicio5RecNoMem(a/3, b-3, c-3) + ejercicio5RecNoMem(a/2, b-2, c-2);
-		}
+		return primero;
 	}
 	
-	public static Integer ejercicio5RecMem(Integer a, Integer b, Integer c) {
-		Integer[][][] mem = null;
-		return ejercicio5RecMem(a,b,c, mem);
-	}
-	
-	public static Integer ejercicio5RecMem(Integer a, Integer b, Integer c, Integer[][][] mem) {
-		if(a<3 || b<3 || c<3) {
-			return a + b*b + 2*c;
+	public static long ejercicio4RecNoMem(Integer n, long cum) {
+		if(n == 2) {
+			return 6;
 		}
-		else if(a % b == 0) {
-			
-			return ejercicio5RecNoMem(a-1, b/2, c/2) + ejercicio5RecNoMem(a-3, b/3, c/3);
+		else if(n == 1) {
+			return 4;
+		}
+		else if(n == 0) {
+			return 2;
 		}
 		else {
-			return ejercicio5RecNoMem(a/3, b-3, c-3) + ejercicio5RecNoMem(a/2, b-2, c-2);
+			cum += 2*ejercicio4RecNoMem(n-1, cum) + 4*ejercicio4RecNoMem(n-2, cum) + 6*ejercicio4RecNoMem(n-3, cum);
 		}
+		return cum;
+	}
+	
+	public static List<Integer> lector4(String ruta){
+		List<Integer> res = new ArrayList<>();
+		List<String> fichero = Files2.linesFromFile(ruta);
+		for(String l:fichero) {
+			res.add(Integer.parseInt(l.split("=")[1]));
+		}
+		return res;
 	}
 }
