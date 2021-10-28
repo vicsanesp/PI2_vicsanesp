@@ -4,7 +4,7 @@ package ejercicios;
 public class Ejercicio5 {
 
 //	hacer iterativo, y recursivo con y sin memoria de: 
-//			a + b^2 + 2*c, a<3 ó b<3 ó c<3
+//			a + b^2 + 2*c, a<3 Ã³ b<3 Ã³ c<3
 //
 //g(a,b,c)  g(a-1, b/2, c/2) + g(a-3, b/3, c/3),    a es multiplo de b
 //
