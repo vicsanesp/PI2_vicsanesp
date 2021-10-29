@@ -56,7 +56,7 @@ public class Test {
 		for (int i = 0; i < ej4.size(); i++) {
 			System.out.println("Entero de entrada  = " + ej4.get(i));
 			System.out.println("Sol. Rec. sin memoria: " + Ejercicio4.ejercicio4RecNoMem(ej4.get(i), 0));
-			System.out.println("Sol. Rec. con memoria: ");
+			System.out.println("Sol. Rec. con memoria: " + Ejercicio4.ejercicio4RecMem(ej4.get(i)));
 			System.out.println("Sol. Iterativa: " + Ejercicio4.ejercicio4It(ej4.get(i)));
 		}
 		
