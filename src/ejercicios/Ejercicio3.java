@@ -1,38 +1,59 @@
 package ejercicios;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import us.lsi.common.Files2;
 import us.lsi.common.IntegerSet;
+import us.lsi.common.Preconditions;
 
 public class Ejercicio3 {
 
 	public static IntegerSet ejercicio3(List<Integer> lista, Integer a, Integer b) {
 		IntegerSet res = IntegerSet.empty();
-		return ejercicio3(lista, a, b, res, 0, lista.size()-1);
+		return ejercicio3(lista, a, b, res, 0);
 	}
 	
-	public static IntegerSet ejercicio3(List<Integer> lista, Integer a, Integer b, IntegerSet res, Integer bot, Integer top){
-		if(top - bot == 0) {
-			res.add(lista.get(bot));
+	public static IntegerSet ejercicio3(List<Integer> lista, Integer a, Integer b, IntegerSet res, Integer cum){
+		Integer puntero = binarySearch(lista, a);
+		if(binarySearch(lista, b)==-1 || binarySearch(lista, a)==-1) {
+			return res;
+		}
+		
+		if(lista.get(puntero + cum)==b-1) {
+			res.add(lista.get(puntero + cum));
 		}
 		else {
-			int mid = (bot + top)/2;
-			if (lista.get(mid)>=a && lista.get(mid)<b) {
-				
-				 res.add(lista.get(mid));
-				 return ejercicio3(lista, a, b, res, bot+1, top);
-				 }
-			else if (b<lista.get(mid)) {
-				 return ejercicio3(lista, a, b, res, mid+1, top);
-				 } 
-			else if(a>=lista.get(mid)){
-				 return ejercicio3(lista, a, b, res, mid+1, top);
-				 }
-				 
+			res.add(lista.get(puntero + cum));
+			ejercicio3(lista, a, b, res, cum-1);
 		}
 		return res;
+	}
+	
+	public static <E extends Comparable<? super E>> int binarySearch(List<E> lista, E key){
+		Comparator<E> ord = Comparator.naturalOrder();
+		return bSearch(lista,0,lista.size(),key,ord);	
+	}
+	
+	private static <E> int bSearch(List<E> lista, int i,int j, E key, Comparator<? super E> ord){
+		Preconditions.checkArgument(j>=i);
+		int r;
+		int k;
+		if(j-i == 0){
+			r = -1;
+		}else{
+			k = (i+j)/2;
+			int r1 = ord.compare(key,lista.get(k));
+			if(r1==0){
+				r = k;
+			}else if(r1>0){
+				r = bSearch(lista,i,k,key,ord);
+			}else{
+				r = bSearch(lista,k+1,j,key,ord);
+			}
+		}
+		return r;
 	}
 	
 	public static List<List<Integer>> lector3lista(String ruta) {
