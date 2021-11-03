@@ -19,6 +19,7 @@ public class Test {
 			System.out.println("(a, b, c) = " + l);
 			System.out.println("Sol. Rec. No Final: " + Ejercicio1.ejercicio1RecNoFin(l.get(0), l.get(1), l.get(2), ""));
 		}
+		System.out.println("==============================================================");
 		System.out.println("========================Ejercicio 2======================================");
 		Matrix<String> ej21 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada1.txt");
 		Matrix<String> ej22 = Ejercicio2.lector2("ficheros/PI2Ej2DatosEntrada2.txt");
@@ -41,6 +42,7 @@ public class Test {
 		for (int i = 0; i < Ejercicio2.ejercicio2(ej22, new ArrayList<String>()).size(); i++) {
 			System.out.println(i+1 + ") " + Ejercicio2.ejercicio2(ej22).get(i));
 		}	
+		System.out.println("==============================================================");
 		
 		
 		System.out.println("========================Ejercicio 3======================================");
@@ -50,6 +52,7 @@ public class Test {
 			System.out.println("Entrada: " + ej3lista.get(i) + " Rango: [" + ej3rango.get(i).get(0) + ", " + ej3rango.get(i).get(1) + ")");
 			System.out.println("Conjunto obtenido: " + Ejercicio3.ejercicio3(ej3lista.get(i), ej3rango.get(i).get(0), ej3rango.get(i).get(1)));
 		}
+		System.out.println("==============================================================");
 		
 		System.out.println("========================Ejercicio 4======================================");
 		List<Integer> ej4 = Ejercicio4.lector4("ficheros/PI2Ej4DatosEntrada.txt");
@@ -59,6 +62,7 @@ public class Test {
 			System.out.println("Sol. Rec. con memoria: " + Ejercicio4.ejercicio4RecMem(ej4.get(i)));
 			System.out.println("Sol. Iterativa: " + Ejercicio4.ejercicio4It(ej4.get(i)));
 		}
+		System.out.println("==============================================================");
 		
 		System.out.println("========================Ejercicio 5======================================");
 		List<List<Integer>> ej5 = Ejercicio1.lector1("ficheros/PI2Ej5DatosEntrada.txt");
