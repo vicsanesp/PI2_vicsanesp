@@ -17,9 +17,16 @@ public class Ejercicio3 {
 	
 	public static IntegerSet ejercicio3(List<Integer> lista, Integer a, Integer b, IntegerSet res, Integer cum){
 		Integer puntero = binarySearch(lista, a);
-		if(binarySearch(lista, b)==-1 || binarySearch(lista, a)==-1) {
+		if(binarySearch(lista, b)==-1 && binarySearch(lista, a)==-1) {
 			return res;
 		}
+		
+		if(binarySearch(lista, b)==-1) {
+			res.add(lista.get(puntero + cum));
+			if(puntero+cum >= lista.size()) {
+				return res;
+			}
+		}else {
 		
 		if(lista.get(puntero + cum)==b-1) {
 			res.add(lista.get(puntero + cum));
@@ -27,6 +34,7 @@ public class Ejercicio3 {
 		else {
 			res.add(lista.get(puntero + cum));
 			ejercicio3(lista, a, b, res, cum-1);
+		}
 		}
 		return res;
 	}
