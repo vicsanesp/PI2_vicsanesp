@@ -53,20 +53,29 @@ public class Ejercicio5 {
 	}
 	
 	public static Integer ejercicio5RecMem(Integer a, Integer b, Integer c) {
-		Integer[][][] mem = null;
+		Map<tripla, Integer> mem = Map2.empty();
 		return ejercicio5RecMem(a,b,c, mem);
 	}
 	
-	public static Integer ejercicio5RecMem(Integer a, Integer b, Integer c, Integer[][][] mem) {
-		if(a<3 || b<3 || c<3) {
-			return a + b*b + 2*c;
-		}
-		else if(a % b == 0) {
-			
-			return ejercicio5RecNoMem(a-1, b/2, c/2) + ejercicio5RecNoMem(a-3, b/3, c/3);
+	public static Integer ejercicio5RecMem(Integer a, Integer b, Integer c, Map<tripla, Integer> mem) {
+		Integer cum = null;
+		tripla key = tripla.of(a, b, c);
+		if(mem.containsKey(key)) {
+			return mem.get(key);
 		}
 		else {
-			return ejercicio5RecNoMem(a/3, b-3, c-3) + ejercicio5RecNoMem(a/2, b-2, c-2);
+			if(a<3 || b<3 || c<3) {
+				cum = a + b*b + 2*c;
+			}
+			else if(a % b == 0) {
+				cum = ejercicio5RecMem(a-1, b/2, c/2, mem) + ejercicio5RecMem(a-3, b/3, c/3, mem);
+			}
+			else {
+				cum = ejercicio5RecMem(a/3,  b-3, c-3, mem) + ejercicio5RecMem(a/2, b-2, c-2, mem);
+			}
+			mem.put(key, cum);
 		}
+		return cum;
+		
 	}
 }
