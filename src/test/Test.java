@@ -19,6 +19,7 @@ public class Test {
 			System.out.println("(a, b, c) = " + l);
 			System.out.println("Sol. Iterativa: " + Ejercicio1.ejercicio1It(l.get(0), l.get(1), l.get(2)));
 			System.out.println("Sol. Rec. No Final: " + Ejercicio1.ejercicio1RecNoFin(l.get(0), l.get(1), l.get(2), ""));
+			System.out.println("Sol. Rec. Final: " + Ejercicio1.ejercicio1RecFin(l.get(0), l.get(1), l.get(2)));
 		}
 		System.out.println("==============================================================");
 		System.out.println("========================Ejercicio 2======================================");
@@ -71,6 +72,7 @@ public class Test {
 			System.out.println("(a, b, c) = " + l);
 			System.out.println("Sol. Iterativa: " + Ejercicio5.ejercicio5It(l.get(0), l.get(1), l.get(2)));
 			System.out.println("Sol. Rec. sin memoria: " + Ejercicio5.ejercicio5RecNoMem(l.get(0), l.get(1), l.get(2)));
+			System.out.println("Sol. Rec. con memoria: " + Ejercicio5.ejercicio5RecMem(l.get(0), l.get(1), l.get(2)));
 		}
 
 	}
