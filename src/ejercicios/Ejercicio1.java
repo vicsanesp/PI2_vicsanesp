@@ -2,13 +2,14 @@ package ejercicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 import us.lsi.common.Files2;
+import us.lsi.common.Map2;
 
 public class Ejercicio1 {
 
-//	Dada la siguiente definiciÃ³n recursiva de la funciÃ³n f (que toma como entrada 3
-//	nÃºmeros enteros positivos y devuelve una cadena):
+//	Dada la siguiente definiciÃƒÂ³n recursiva de la funciÃƒÂ³n f (que toma como entrada 3
+//	nÃƒÂºmeros enteros positivos y devuelve una cadena):
 //	  "(" + toString(a*b*c) + ")", a<3 and b<3 and c<3
 //	  
 //	  "(" + toString(a+b+c) + ")", a<5 or b<5 or c<5
@@ -16,13 +17,39 @@ public class Ejercicio1 {
 //	  toString(a*b*c) + f(a/2, b-2, c/2) a es par and b es par and c es par
 //	  
 //	  toString(a+b+c) + f(a/3, b-3, c/3) en otro caso
-//	siendo + un operador que representa la concatenaciÃ³n de cadenas, y toString(i) un mÃ©todo
-//	que devuelve una cadena a partir de un entero. Al llevar a cabo la implementaciÃ³n, para
+//	siendo + un operador que representa la concatenaciÃƒÂ³n de cadenas, y toString(i) un mÃƒÂ©todo
+//	que devuelve una cadena a partir de un entero. Al llevar a cabo la implementaciÃƒÂ³n, para
 //	el tratamiento de cadenas se recomienda hacer uso de String.format.
 	
+	private static record tripla( Integer a, Integer b, Integer c) {
+		public static tripla of(Integer a, Integer b, Integer c) {
+			return new tripla(a, b, c);
+		}
+	}
+	
 	public static String ejercicio1It(Integer a, Integer b, Integer c) {
+		Map<tripla, String> res = Map2.empty();
 		String cum = "";
-		return cum;
+		for (int i = 0; i <= a; i++) {
+			for (int j = 0; j <= b; j++) {
+				for (int k = 0; k <= c; k++) {
+					if(i<3 && j<3 && k<3) {
+						cum ="(" + Integer.toString(i*j*k) + ")";
+					}
+					else if(i<5 || j<5 || k<5) {
+						cum ="(" + Integer.toString(i+j+k) + ")";
+					}
+					else if(i%2 == 0 && j%2 == 0 && k%2 == 0) {
+						cum = Integer.toString(i*j*k) + res.get(tripla.of(i/2, j-2, k/2));
+					}
+					else {
+						cum = Integer.toString(i+j+k) + res.get(tripla.of(i/3, j-3, k/3));
+					}
+					res.put(tripla.of(i, j, k), cum);
+				}
+			}
+		}
+		return res.get(tripla.of(a, b, c));
 	}
 	
 	public static String ejercicio1RecNoFin(Integer a, Integer b, Integer c, String cum) {
