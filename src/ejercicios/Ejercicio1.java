@@ -52,19 +52,39 @@ public class Ejercicio1 {
 		return res.get(tripla.of(a, b, c));
 	}
 	
-	public static String ejercicio1RecNoFin(Integer a, Integer b, Integer c, String cum) {
+	public static String ejercicio1RecFin(Integer a, Integer b, Integer c) {
+		return ejercicio1RecFin(a, b, c, "");
+	}
+	public static String ejercicio1RecFin(Integer a, Integer b, Integer c, String cum) {
 		if(a<3 && b<3 && c<3) {
-			 return cum+="(" + Integer.toString(a*b*c) + ")";
+			cum +="(" + Integer.toString(a*b*c) + ")";
 		}
 		else if(a<5 || b<5 || c<5) {
-			return cum+="(" + Integer.toString(a+b+c) + ")";
+			cum +="(" + Integer.toString(a+b+c) + ")";
 		}
 		else if(a%2 == 0 && b%2 == 0 && c%2 == 0) {
-			return cum+= Integer.toString(a*b*c) + ejercicio1RecNoFin(a/2, b-2, c/2, cum);
+			cum += ejercicio1RecFin(a/2, b-2, c/2, Integer.toString(a*b*c));//
 		}
 		else {
-			return cum+= Integer.toString(a+b+c) + ejercicio1RecNoFin(a/3, b-3, c/3, cum);
+			cum += ejercicio1RecFin(a/3, b-3, c/3, Integer.toString(a+b+c));//
 		}
+		return cum;
+	}
+	
+	public static String ejercicio1RecNoFin(Integer a, Integer b, Integer c, String cum) {
+		if(a<3 && b<3 && c<3) {
+			cum ="(" + Integer.toString(a*b*c) + ")";
+		}
+		else if(a<5 || b<5 || c<5) {
+			cum ="(" + Integer.toString(a+b+c) + ")";
+		}
+		else if(a%2 == 0 && b%2 == 0 && c%2 == 0) {
+			cum = Integer.toString(a*b*c) + ejercicio1RecNoFin(a/2, b-2, c/2, cum);
+		}
+		else {
+			cum = Integer.toString(a+b+c) + ejercicio1RecNoFin(a/3, b-3, c/3, cum);
+		}
+		return cum;
 	}
 	
 	public static List<List<Integer>> lector1(String ruta){
