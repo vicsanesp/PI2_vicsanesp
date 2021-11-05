@@ -17,6 +17,7 @@ public class Test {
 		List<List<Integer>> ej1 = Ejercicio1.lector1("ficheros/PI2Ej1DatosEntrada.txt");
 		for(List<Integer> l:ej1) {
 			System.out.println("(a, b, c) = " + l);
+			System.out.println("Sol. Iterativa: " + Ejercicio1.ejercicio1It(l.get(0), l.get(1), l.get(2)));
 			System.out.println("Sol. Rec. No Final: " + Ejercicio1.ejercicio1RecNoFin(l.get(0), l.get(1), l.get(2), ""));
 		}
 		System.out.println("==============================================================");
@@ -68,6 +69,7 @@ public class Test {
 		List<List<Integer>> ej5 = Ejercicio1.lector1("ficheros/PI2Ej5DatosEntrada.txt");
 		for(List<Integer> l:ej5) {
 			System.out.println("(a, b, c) = " + l);
+			System.out.println("Sol. Iterativa: " + Ejercicio5.ejercicio5It(l.get(0), l.get(1), l.get(2)));
 			System.out.println("Sol. Rec. sin memoria: " + Ejercicio5.ejercicio5RecNoMem(l.get(0), l.get(1), l.get(2)));
 		}
 
