@@ -23,9 +23,10 @@ public class Ejercicio3 {
 		
 		if(binarySearch(lista, b)==-1) {
 			res.add(lista.get(puntero + cum));
-			if(puntero+cum >= lista.size()) {
+			if(puntero+cum <= 0) {
 				return res;
 			}
+			ejercicio3(lista, a, b, res, cum-1);
 		}else {
 		
 		if(lista.get(puntero + cum)==b-1) {
@@ -40,7 +41,7 @@ public class Ejercicio3 {
 	}
 	
 	public static <E extends Comparable<? super E>> int binarySearch(List<E> lista, E key){
-		Comparator<E> ord = Comparator.naturalOrder();
+		Comparator<E> ord = Comparator.reverseOrder();
 		return bSearch(lista,0,lista.size(),key,ord);	
 	}
 	
@@ -55,7 +56,7 @@ public class Ejercicio3 {
 			int r1 = ord.compare(key,lista.get(k));
 			if(r1==0){
 				r = k;
-			}else if(r1>0){
+			}else if(r1<0){
 				r = bSearch(lista,i,k,key,ord);
 			}else{
 				r = bSearch(lista,k+1,j,key,ord);
